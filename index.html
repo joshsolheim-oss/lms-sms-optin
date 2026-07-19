@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMS Notifications Sign-Up — Life Management System</title>
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --muted: #5c5c70;
+    --accent: #2563eb;
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --line: #e3e5ee;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    max-width: 560px;
+    width: 100%;
+    padding: 36px 32px;
+    box-shadow: 0 2px 10px rgba(20, 20, 60, 0.06);
+  }
+  h1 { font-size: 1.45rem; margin-bottom: 6px; }
+  .brand { font-size: 0.95rem; color: var(--muted); margin-bottom: 24px; }
+  p { margin-bottom: 14px; }
+  .desc { color: var(--muted); font-size: 0.97rem; margin-bottom: 22px; }
+  label { display: block; font-weight: 600; font-size: 0.92rem; margin-bottom: 6px; }
+  input[type="tel"] {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 18px;
+  }
+  .consent {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: #f2f5ff;
+    border: 1px solid #d9e2ff;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+  .consent input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; width: 16px; height: 16px; }
+  button {
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 13px;
+    cursor: pointer;
+  }
+  button:hover { background: #1d4fd8; }
+  .fineprint {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .fineprint p { margin-bottom: 8px; }
+  a { color: var(--accent); }
+  .confirmation { display: none; text-align: center; padding: 20px 0; }
+  .confirmation h2 { font-size: 1.2rem; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div id="form-view">
+    <h1>Sign Up for SMS Notifications</h1>
+    <div class="brand">Josh Solheim — Life Management System</div>
+    <p class="desc">
+      Enter your mobile number below to receive automated SMS notifications from the
+      Life Management System, a personal productivity and fitness tracking application.
+      Messages include activity reminders, fitness nudges, and daily health-tracking
+      notifications.
+    </p>
+
+    <form id="optin-form" onsubmit="return handleSubmit(event)">
+      <label for="phone">Mobile Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="+1 (555) 555-5555" required>
+
+      <div class="consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent" style="font-weight:400; margin:0;">
+          I agree to receive automated SMS notifications (activity reminders, fitness
+          nudges, and health-tracking alerts) from Josh Solheim — Life Management System
+          at the phone number provided. Message frequency varies. Message &amp; data
+          rates may apply. Reply HELP for help or STOP to cancel at any time. Consent
+          is not a condition of any purchase.
+        </label>
+      </div>
+
+      <button type="submit">Sign Up for SMS Notifications</button>
+    </form>
+  </div>
+
+  <div id="confirm-view" class="confirmation">
+    <h2>You're signed up ✔</h2>
+    <p>You will receive a confirmation message shortly. Reply STOP at any time to
+    unsubscribe, or HELP for assistance.</p>
+  </div>
+
+  <div class="fineprint">
+    <p><strong>Program details:</strong> Josh Solheim — Life Management System sends
+    automated SMS notifications for personal productivity and fitness tracking
+    (activity reminders, inactivity nudges, and daily report alerts).</p>
+    <p>Message frequency varies. Message &amp; data rates may apply.</p>
+    <p>Reply <strong>HELP</strong> for help. Reply <strong>STOP</strong> to cancel at
+    any time.</p>
+    <p>Carriers are not liable for delayed or undelivered messages.</p>
+    <p>
+      <a href="https://claude.ai/code/artifact/87840cfa-40b4-448a-bf3c-242c1a273b7d" target="_blank" rel="noopener">Privacy Policy</a>
+      &nbsp;|&nbsp;
+      <a href="https://claude.ai/code/artifact/a3d06996-36db-4684-8a94-0ca2d85ec89d" target="_blank" rel="noopener">Terms of Service</a>
+    </p>
+    <p>Your phone number will never be shared with or sold to third parties for
+    marketing purposes.</p>
+  </div>
+</div>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('form-view').style.display = 'none';
+  document.getElementById('confirm-view').style.display = 'block';
+  return false;
+}
+</script>
+</body>
+</html>
